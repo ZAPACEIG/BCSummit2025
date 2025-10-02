@@ -1,0 +1,36 @@
+# Node.js
+node_modules/
+dist/
+.env
+
+# Logs
+logs/
+*.log
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+
+# OS
+.DS_Store
+Thumbs.db
+
+# TypeScript
+*.tsbuildinfo
+
+# VSCode
+.vscode/
+
+# Others
+*.local
+*.cache
+.idea/
+
+# Coverage
+coverage/
+
+# Build
+build/
+
+# Misc
+*.swp
+*.swo
