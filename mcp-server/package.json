@@ -1,0 +1,46 @@
+{
+  "name": "bc-mcp-server",
+  "version": "1.0.0",
+  "description": "Model Context Protocol server for Microsoft Dynamics 365 Business Central",
+  "main": "dist/server.js",
+  "type": "module",
+  "scripts": {
+    "build": "tsc",
+    "dev": "tsx server.ts",
+    "start": "node dist/server.js",
+    "clean": "rimraf dist",
+    "lint": "eslint **/*.ts",
+    "type-check": "tsc --noEmit"
+  },
+  "keywords": [
+    "mcp",
+    "model-context-protocol",
+    "business-central",
+    "dynamics-365"
+  ],
+  "author": "BC Summit 2025",
+  "license": "MIT",
+  "dependencies": {
+    "@modelcontextprotocol/sdk": "^1.18.0",
+    "@types/express": "^5.0.3",
+    "@types/pino": "^7.0.4",
+    "axios": "^1.7.2",
+    "dotenv": "^17.2.2",
+    "express": "^5.1.0",
+    "pino": "^9.9.5",
+    "pino-pretty": "^13.1.1",
+    "zod": "^3.23.8"
+  },
+  "devDependencies": {
+    "@types/node": "^20.14.10",
+    "@typescript-eslint/eslint-plugin": "^7.16.0",
+    "@typescript-eslint/parser": "^7.16.0",
+    "eslint": "^8.57.0",
+    "rimraf": "^5.0.7",
+    "tsx": "^4.16.2",
+    "typescript": "^5.5.3"
+  },
+  "engines": {
+    "node": ">=18.0.0"
+  }
+}

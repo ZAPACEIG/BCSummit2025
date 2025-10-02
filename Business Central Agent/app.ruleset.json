@@ -1,0 +1,10 @@
+{
+    "name": "Job Ruleset",
+    "description": "Job ruleset for AL language",
+    "includedRuleSets": [
+        {
+            "action": "None",
+            "path": "./app.ruleset.json"
+        }
+    ]
+}

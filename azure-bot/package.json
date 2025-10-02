@@ -1,0 +1,61 @@
+{
+  "name": "bcsummit-bot",
+  "version": "1.0.0",
+  "description": "Bot conversacional inteligente para Business Central - Análisis de clientes, productos y pedidos de venta",
+  "main": "lib/index.js",
+  "scripts": {
+    "build": "tsc --build",
+    "dev": "nodemon --exec npm start",
+    "start": "node lib/index.js",
+    "watch": "nodemon --exec \"npm run build && npm start\"",
+    "test": "jest",
+    "test:watch": "jest --watch",
+    "lint": "eslint src/**/*.ts",
+    "lint:fix": "eslint src/**/*.ts --fix",
+    "clean": "rimraf lib/",
+    "docker:build": "docker build -t bcsummit-bot .",
+    "docker:run": "docker run -p 3978:3978 bcsummit-bot"
+  },
+  "keywords": [
+    "bot",
+    "typescript",
+    "azure",
+    "botframework",
+    "ai-foundry",
+    "business-central",
+    "erp",
+    "bcsummit"
+  ],
+  "author": "Ayesa Ibermática CoE Microsoft",
+  "license": "MIT",
+  "dependencies": {
+    "@types/express": "^5.0.3",
+    "@types/jsonwebtoken": "^9.0.10",
+    "adaptivecards": "^3.0.4",
+    "axios": "^1.6.8",
+    "botbuilder": "^4.17.0-blobs1",
+    "botbuilder-ai": "^4.22.1",
+    "botbuilder-core": "^4.22.1",
+    "dotenv": "^16.4.5",
+    "express": "^5.1.0",
+    "jsonwebtoken": "^9.0.2",
+    "restify": "^11.1.0",
+    "winston": "^3.13.0"
+  },
+  "devDependencies": {
+    "@types/jest": "^29.5.12",
+    "@types/node": "^20.12.7",
+    "@types/restify": "^8.5.12",
+    "@typescript-eslint/eslint-plugin": "^7.7.1",
+    "@typescript-eslint/parser": "^7.7.1",
+    "eslint": "^8.57.0",
+    "jest": "^29.7.0",
+    "nodemon": "^3.1.0",
+    "rimraf": "^5.0.5",
+    "ts-jest": "^29.1.2",
+    "typescript": "^5.4.5"
+  },
+  "engines": {
+    "node": ">=20.0.0"
+  }
+}

@@ -1,0 +1,32 @@
+{
+  "id": "37091902-addb-4979-9420-e534edbc88aa",
+  "name": "Business Central Agent",
+  "publisher": "AYESA IBERMATICA SAU",
+  "version": "26.3.0.0",
+  "brief": "Business Central Agent",
+  "description": "Business Central Agent",
+  "privacyStatement": "https://www.ayesa365.com/politica-de-privacidad-y-aviso-legal/",
+  "EULA": "https://www.ayesa365.com/",
+  "help": "https://www.ayesa365.com/",
+  "url": "https://www.ayesa365.com/",
+  "logo": "images/ayesa.jpg",
+  "dependencies": [],
+  "screenshots": [],
+  "platform": "26.0.0.0",
+  "application": "26.3.0.0",
+  "idRanges": [
+    {
+      "from": 50000,
+      "to": 99999
+    }
+  ],
+  "resourceExposurePolicy": {
+    "allowDebugging": true,
+    "allowDownloadingSource": true,
+    "includeSourceInSymbolFile": true
+  },
+  "runtime": "15.2",
+  "features": [
+    "NoImplicitWith"
+  ]
+}
