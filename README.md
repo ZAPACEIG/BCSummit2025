@@ -69,7 +69,7 @@ az containerapp update --name ca-bcsummit-mcp-eus2-001 --resource-group rg-bcsum
 ```powershell
 az containerapp show --name ca-bcsummit-mcp-eus2-001 --resource-group rg-bcsummit --query properties.template.containers[0].env
 
-az containerapp update --name ca-bcsummit-mcp-eus2-001 --resource-group rg-bcsummit --set-env-vars BC_CLIENT_ID=aa35324d-c0e8-4710-afa7-902c875b9f6f BC_CLIENT_SECRET=LKa8Q~8VDTNdA8f5jKVaNnjghSlZ~RNK3OVnmbr3 BC_TENANT_ID=1931015f-500c-4c1f-b5ec-0a341e4b197d BC_COMPANY_ID=444afd79-7588-f011-b9e7-6045bde98cf6 BC_ENVIRONMENT=IplusD BC_BASE_URL=https://api.businesscentral.dynamics.com BC_API_VERSION=v2.0 PORT=3000 NODE_ENV=production
+az containerapp update --name ca-bcsummit-mcp-eus2-001 --resource-group rg-bcsummit --set-env-vars BC_CLIENT_ID=aa35324d-c0e8-4710-afa7-902c875b9f6f BC_CLIENT_SECRET=LKa8Q~8VDTNdA8f5jKVaNnjghSlZ~RNK3OVnmbr3 BC_TENANT_ID=1931015f-500c-4c1f-b5ec-0a341e4b197d BC_COMPANY_ID=f768a86f-0199-f011-a7af-6045bdaccd6b BC_ENVIRONMENT=IplusD BC_BASE_URL=https://api.businesscentral.dynamics.com BC_API_VERSION=v2.0 PORT=3000 NODE_ENV=production
 ```
 
 ### 📁 `/flow` - AI Foundry Prompt Flow
