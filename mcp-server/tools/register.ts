@@ -10,9 +10,11 @@ import { CreateSalesOrderTool } from "./create-sales-order-tool.js";
 import { CreateSalesOrderLineTool } from "./create-sales-order-line-tool.js";
 
 export function registerAllTools(server: McpServer, bcClient: BusinessCentralClient) {
+  console.log('🔧 Registering BC Summit MCP tools...');
 
   const getCustomersTool = new GetCustomersTool(bcClient);
   const defCustomers = getCustomersTool.getDefinition();
+  console.log(`✅ Registering tool: ${defCustomers.name}`);
   server.registerTool(
     defCustomers.name,
     {
@@ -21,13 +23,17 @@ export function registerAllTools(server: McpServer, bcClient: BusinessCentralCli
       inputSchema: defCustomers.inputSchema.shape
     },
     async (args: unknown) => {
+      console.log(`🚀 EXECUTING get-customers with args:`, args);
       const result = await getCustomersTool.execute(args);
+      const count = Array.isArray(result.structuredContent) ? result.structuredContent.length : 'N/A';
+      console.log(`✅ get-customers completed, customers count:`, count);
       return {
         content: result.content.map(c => ({ type: 'text', text: JSON.stringify(c.json) })),
         structuredContent: { customers: result.structuredContent }
       };
     }
   );
+  console.log(`✅ Tool registered: ${defCustomers.name}`);
 
   const getItemsTool = new GetItemsTool(bcClient);
   const defItems = getItemsTool.getDefinition();

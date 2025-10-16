@@ -89,48 +89,9 @@ class MCPClient:
         self._session_initialized = False
 
     def _initialize_session(self) -> bool:
-        """Inicializa la sesión MCP con el servidor."""
-        if self._session_initialized and self._session_id:
-            logger.info(f"Reutilizando sesión MCP existente: {self._session_id}")
-            return True
-
-        headers = {
-            "Content-Type": "application/json",
-            "Accept": "application/json, text/event-stream",
-            "User-Agent": "Azure-PromptFlow-BCSummit-Client/1.0"
-        }
-
-        payload = {
-            "jsonrpc": "2.0",
-            "method": "initialize",
-            "params": {
-                "protocolVersion": "2024-11-05",
-                "capabilities": {"roots": {"listChanged": True}, "sampling": {}},
-                "clientInfo": {"name": "Azure-PromptFlow-BCSummit-Client", "version": "1.0.0"}
-            },
-            "id": 1
-        }
-
-        try:
-            logger.info("Inicializando nueva sesión MCP...")
-            response = requests.post(self.MCP_SERVER_URL, json=payload, headers=headers, timeout=30)
-
-            if response.status_code == 200:
-                self._session_id = response.headers.get('mcp-session-id')
-                if self._session_id:
-                    self._session_initialized = True
-                    logger.info(f"Sesión MCP inicializada exitosamente. Session ID: {self._session_id}")
-                    return True
-                else:
-                    logger.warning("Inicialización exitosa pero no se recibió session ID")
-                    return False
-            else:
-                logger.error(f"Error inicializando sesión MCP: {response.status_code} - {response.text}")
-                return False
-
-        except Exception as e:
-            logger.error(f"Excepción inicializando sesión MCP: {str(e)}")
-            return False
+        """Modo sin sesión - llamadas directas como Test."""
+        logger.info("Modo sin sesión MCP (llamadas directas)")
+        return True
 
     def _reset_session(self):
         """Reinicia la sesión MCP."""
@@ -236,16 +197,11 @@ class MCPClient:
         }
 
     def _call_tool(self, tool_name: str, arguments: Dict[str, Any]) -> Dict[str, Any]:
-        """Ejecuta una llamada a una herramienta MCP."""
-        # Asegurar que la sesión esté inicializada
-        if not self._initialize_session():
-            return {"error": "No se pudo inicializar la sesión MCP"}
-
+        """Ejecuta una llamada a una herramienta MCP (llamada directa sin sesión)."""
         headers = {
             "Content-Type": "application/json",
             "Accept": "application/json, text/event-stream",
-            "User-Agent": "Azure-PromptFlow-BCSummit-Client/1.0",
-            "mcp-session-id": self._session_id
+            "User-Agent": "Azure-PromptFlow-BCSummit-Client/1.0"
         }
 
         payload = {
@@ -255,14 +211,14 @@ class MCPClient:
                 "name": tool_name,
                 "arguments": arguments
             },
-            "id": 2
+            "id": 1
         }
 
         max_retries = 2
         for attempt in range(max_retries):
             try:
                 logger.info(f"Llamando herramienta MCP: {tool_name} con argumentos: {arguments} (intento {attempt + 1}/{max_retries})")
-                response = requests.post(self.MCP_SERVER_URL, json=payload, headers=headers, timeout=60)
+                response = requests.post(self.MCP_SERVER_URL, json=payload, headers=headers, timeout=180)
 
                 if response.status_code == 200:
                     return self._parse_response(response)

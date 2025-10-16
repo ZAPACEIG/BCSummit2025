@@ -12,7 +12,7 @@ page 50001 "WebChatPage Factbox"
             {
                 trigger ControlAddInReady(CallbackUrl: Text)
                 begin
-                    CurrPage.WebPageViewer.Navigate('https://zapaceig.github.io/zapaceig/indexmini.html');
+                    CurrPage.WebPageViewer.Navigate('https://zapaceig.github.io/BCSummit2025/Web%20Chat/indexmini.html');
                 end;
             }
         }

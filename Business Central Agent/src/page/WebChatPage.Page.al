@@ -14,7 +14,7 @@ page 50000 WebChatPage
             {
                 trigger ControlAddInReady(CallbackUrl: Text)
                 begin
-                    CurrPage.WebPageViewer.Navigate('https://zapaceig.github.io/zapaceig/index.html');
+                    CurrPage.WebPageViewer.Navigate('https://zapaceig.github.io/BCSummit2025/Web%20Chat/index.html');
                 end;
             }
         }
